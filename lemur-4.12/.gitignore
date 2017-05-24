@@ -7,3 +7,4 @@ site-search/build.param
 site-search/crawl-index
 site-search/excluded_hosts
 site-search/seeds.txt
+*.o

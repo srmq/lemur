@@ -75,7 +75,8 @@ bool lemur::parse::BasicDocStream::hasMore()
 {
   bool moreDoc = false;
   if (!nextTokenRead) {
-    moreDoc = *ifs >> buf;
+    *ifs >> buf;
+    moreDoc = ((*ifs).rdstate() & std::ifstream::goodbit) != 0;
     nextTokenRead = true;
     if (moreDoc && strcmp(buf, "<DOC")) {
       cerr << " actual token seen: "<< buf << endl;

@@ -131,10 +131,11 @@ bool lemur::api::ResultFile::readLine()
   char dummy3[100];
 
   if (trecFmt) {
-    return (*inStr >> curQID >> dummy1 >> curDID >> dummy2 >> curSC >> dummy3);
+    *inStr >> curQID >> dummy1 >> curDID >> dummy2 >> curSC >> dummy3;
   } else {
-    return (*inStr >> curQID >> curDID >> curSC);
+    *inStr >> curQID >> curDID >> curSC;
   }
+  return ((*inStr).rdstate() & std::ifstream::goodbit) != 0;
 }
 
 
